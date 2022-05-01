@@ -63,12 +63,18 @@ public class Tienda {
     }
 
     //vender
-    public boolean usuarioVender(Objeto objeto, int cantidad){
+    public boolean usuarioVender(Objeto objeto, int cantidad, int indiceObjeto){
+
+        if(indiceObjeto > objetosDisponibles.size()){
+            System.out.println("Error");
+            return false;
+        } else {
+
+        }
         //logica inversa de comprar
-        System.out.println(objeto.getClass());
+
         //dinero infinito en la tienda
-        //recibir objetos y darle el dinero
-        return false;
+        //recibir objetos y darle el diner0
     }
 
     public void mostrarDisponibles(){
