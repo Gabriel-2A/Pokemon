@@ -99,10 +99,13 @@ public class Entrenador extends Personaje{
         //mostrar los elementos de mochila
         //que el usuario escoja cual tirar
 
-    public void tirarObjeto(int indiceObjeto){
+    public boolean tirarObjeto(){
         System.out.println("Objetos disponibles: ");
+        int indice = 1;
         for (Objeto objeto: mochila) {
-            System.out.println(mochila);
+            System.out.println(indice+" ");
+            System.out.println(objeto);
+            indice++;
         }
         System.out.println("Digite el numero del objeto que decea tirar: ");
         indiceObjeto = sc.nextInt();
@@ -124,11 +127,14 @@ public class Entrenador extends Personaje{
 
 
 
-    public void intercambiarPokemon(int indicePokemonPropio, int indicePokemonAjeno, boolean probabilidad){
+    public public boolean intercambiarPokemon(ArrayList<Pokemon> mochilaOpuesto){
 
         System.out.println("Pokemones disponibles del entrenador " + nombre + ": ");
-        for (Pokemon pokemon: pokedex) {
-            System.out.println(pokedex);
+        int indice = 1;
+        for (Pokemon pokemon: mochilaOpuesto) {
+            System.out.println(indice+" ");
+            System.out.println(pokemon);
+            indice++;
         }
 
         System.out.println("Pokemones disponibles del entrenador " + nombre + ": ");
@@ -137,16 +143,23 @@ public class Entrenador extends Personaje{
         } //No se me ocurre como mostrar la pokedex del otro entrenador
 
         System.out.println("¿Que pokemon deceas intercambiar?");
-        indicePokemonAjeno = sc.nextInt();
+        int indicePokemonAjeno = sc.nextInt();
         System.out.println("Que pokemon ofreses?");
-        indicePokemonPropio = sc.nextInt();
+        int indicePokemonPropio = sc.nextInt();
 
-        probabilidad = random.nextInt(100) > 60;
+        boolean probabilidad = ((random.nextInt(100)) > 60) ? true : false;
         if(probabilidad){
+            Pokemon aux = pokedex.get(indicePokemonPropio);
 
+            return true;
         } else {
             System.out.println("El otro entrenador no accedio a intercambiar su pokemon");
+            return false;
         }
     }
+
+    public void mostrarMochila(){}
+
+    public void mostrarPokedex(){}
 
 }

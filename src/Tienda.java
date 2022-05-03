@@ -65,11 +65,17 @@ public class Tienda {
     //vender
     public boolean usuarioVender(Objeto objeto, int cantidad, int indiceObjeto){
 
-        if(indiceObjeto > objetosDisponibles.size()){
-            System.out.println("Error");
+        if(objeto.getClass().toString().equals("Clase Baya")){
+            System.out.println("No acepto bayas");
             return false;
         } else {
-
+            for (Objeto elemento : objetosDisponibles){
+                if(elemento.nombre.equals(objeto.nombre)){
+                    elemento.cantidad += cantidad;
+                    System.out.println("Comprado Objeto existente");
+                    return true;
+                }
+            }
         }
         //logica inversa de comprar
 
