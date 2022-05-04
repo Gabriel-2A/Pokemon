@@ -99,21 +99,14 @@ public class Entrenador extends Personaje{
         //mostrar los elementos de mochila
         //que el usuario escoja cual tirar
 
-    public boolean tirarObjeto(){
-        System.out.println("Objetos disponibles: ");
-        int indice = 1;
-        for (Objeto objeto: mochila) {
-            System.out.println(indice+" ");
-            System.out.println(objeto);
-            indice++;
-        }
-        System.out.println("Digite el numero del objeto que decea tirar: ");
-        indiceObjeto = sc.nextInt();
-        if(mochila.size() <= 0){
-            System.out.println("Ya no hay objetos para tirar");
+    public boolean tirarObjeto(int indiceObjeto){
+        if(indiceObjeto > mochila.size()-1){
+            return false;
         } else {
             mochila.remove(indiceObjeto);
+            return true;
         }
+
     }
 
     //intercambiar
@@ -158,7 +151,15 @@ public class Entrenador extends Personaje{
         }
     }
 
-    public void mostrarMochila(){}
+    public void mostrarMochila(){
+        System.out.println("los objetos disponibles son: ");
+        int indice = 1;
+        for (Objeto objeto : mochila) {
+            System.out.println(indice+" . ");
+            System.out.println(objeto);
+            indice++;
+        }
+    }
 
     public void mostrarPokedex(){}
 

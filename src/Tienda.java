@@ -78,7 +78,7 @@ public class Tienda {
             }
             objetosDisponibles.add(objeto);
             objetosDisponibles.get(objetosDisponibles.size()-1).cantidad = cantidad;
-            System.out.println("Comprado Objeto existente");
+            System.out.println("Comprado Objeto nuevo");
             return  true;
         }
         //logica inversa de comprar
@@ -91,7 +91,7 @@ public class Tienda {
         System.out.println("los objetos disponibles son: ");
         int indice = 1;
         for (Objeto objeto:objetosDisponibles) {
-            System.out.println(indice+"");
+            System.out.println(indice+" . ");
             System.out.println(objeto); // falta implementar to string
         }
     }
