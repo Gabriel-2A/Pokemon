@@ -120,30 +120,29 @@ public class Entrenador extends Personaje{
 
 
 
-    public public boolean intercambiarPokemon(ArrayList<Pokemon> mochilaOpuesto){
+    public boolean intercambiarPokemon(ArrayList<Pokemon> pokedexOpuesto){
 
-        System.out.println("Pokemones disponibles del entrenador " + nombre + ": ");
+        System.out.println("Pokemones disponibles del entrenador Opuesto: ");
         int indice = 1;
-        for (Pokemon pokemon: mochilaOpuesto) {
-            System.out.println(indice+" ");
+        for (Pokemon pokemon: pokedexOpuesto) {
+            System.out.println(indice+" . ");
             System.out.println(pokemon);
             indice++;
         }
 
-        System.out.println("Pokemones disponibles del entrenador " + nombre + ": ");
-        for (Pokemon pokemon: pokedex) {
-            System.out.println(pokedex);
-        } //No se me ocurre como mostrar la pokedex del otro entrenador
-
         System.out.println("¿Que pokemon deceas intercambiar?");
-        int indicePokemonAjeno = sc.nextInt();
+        int indicePokemonOpuesto = sc.nextInt()-1;
         System.out.println("Que pokemon ofreses?");
-        int indicePokemonPropio = sc.nextInt();
+        mostrarPokedex();
+        int indicePokemonPropio = sc.nextInt()-1;
+        System.out.println("Te lo cambio por: " + pokedex.get(indicePokemonPropio));
 
         boolean probabilidad = ((random.nextInt(100)) > 60) ? true : false;
         if(probabilidad){
             Pokemon aux = pokedex.get(indicePokemonPropio);
-
+            pokedex.set(indicePokemonPropio, pokedexOpuesto.get(indicePokemonOpuesto));
+            pokedexOpuesto.remove(indicePokemonOpuesto);
+            pokedexOpuesto.add(aux);
             return true;
         } else {
             System.out.println("El otro entrenador no accedio a intercambiar su pokemon");
@@ -161,6 +160,14 @@ public class Entrenador extends Personaje{
         }
     }
 
-    public void mostrarPokedex(){}
+    public void mostrarPokedex(){
+        System.out.println("los Pokemones disponibles son: ");
+        int indice = 1;
+        for (Pokemon pokemon : pokedex) {
+            System.out.println(indice+" . ");
+            System.out.println(pokemon);
+            indice++;
+        }
+    }
 
 }
