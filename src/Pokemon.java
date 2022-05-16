@@ -14,7 +14,9 @@ public class Pokemon extends Personaje{
     private  boolean esLegendario;
     private String debilContra;
     private String fuerteContra;
-    private int ataque;
+    private int fuerza;
+    private int velocidad;
+
 
     public String getDebilContra() {
         return debilContra;
@@ -64,17 +66,24 @@ public class Pokemon extends Personaje{
         this.fuerteContra = fuerteContra;
     }
 
-    public int getAtaque() {
-        return ataque;
+    public int getFuerza() {
+        return fuerza;
     }
 
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
     }
 
-    public Pokemon(String nombre, int nivel, char genero,
-                   String tipo, Habilidad habilidad, int hp, boolean esLegendario,
-                   String debilContra, String fuerteContra, int ataque) {
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public Pokemon(String nombre, int nivel, char genero, String tipo, Habilidad habilidad, int hp,
+                   boolean esLegendario, String debilContra, String fuerteContra, int fuerza, int velocidad) {
         super(nombre, nivel, genero);
         this.tipo = tipo;
         this.habilidad = habilidad;
@@ -82,10 +91,11 @@ public class Pokemon extends Personaje{
         this.esLegendario = esLegendario;
         this.debilContra = debilContra;
         this.fuerteContra = fuerteContra;
-        this.ataque = ataque;
+        this.fuerza = fuerza;
+        this.velocidad = velocidad;
     }
 
-    //pelea
+//pelea
     // consumi pocion o baya  para ataque?
         //habilidad.ataqueBase + 20
 

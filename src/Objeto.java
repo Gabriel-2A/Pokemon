@@ -1,4 +1,4 @@
-public class Objeto {
+public abstract class Objeto {
     //costo - double
     //cantidad - entero
     //nombre - String
@@ -57,5 +57,8 @@ public class Objeto {
                 ", tipo = '" + tipo + '\'' +
                 "}";
     }
+
+    //usar
+    public abstract boolean usar(Pokemon pokemon);
 
 }

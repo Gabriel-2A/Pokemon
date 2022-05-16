@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Pokebola extends Objeto{
     //efectividad - double
     private double efectividad;
@@ -15,6 +17,7 @@ public class Pokebola extends Objeto{
         this.efectividad = efectividad;
     }
 
+    public Random random = new Random();
     //atrapar/usar retorna true / false
     //revisar el tipo de pokemon
         //si es legendario le quitamos 40 de efectividad
@@ -27,4 +30,16 @@ public class Pokebola extends Objeto{
             //o el usuario ya no quiera intentar
 
 
+    @Override
+    public boolean usar(Pokemon pokemon) {
+        if(pokemon.isEsLegendario()){
+            this.efectividad -= 40;
+        }
+        int valor = random.nextInt(100);
+        if(valor >= 1 && valor <= this.efectividad){
+            return true;
+        } else {
+            return  false;
+        }
+    }
 }

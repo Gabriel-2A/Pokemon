@@ -36,4 +36,20 @@ public class Baya extends Objeto{
         //si es velocidad
             //aumentar 20 de velocidad
 
+
+    @Override
+    public boolean usar(Pokemon pokemon) {
+        if(this.efecto.equals("curacion")){
+            pokemon.setHp(pokemon.getHp()+20);
+            return true;
+        } else if(this.efecto.equals("fuerza")){
+            pokemon.setFuerza(pokemon.getFuerza()+20);
+            return true;
+        } else if(this.efecto.equals("velocidad")){
+            pokemon.setVelocidad(pokemon.getVelocidad()+20);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
