@@ -65,7 +65,8 @@ public class Entrenador extends Personaje{
         this.mochila = mochila;
         this.dinero = dinero;
     }
-
+    Scanner sc = new Scanner(System.in);
+    Random random = new Random();
     //pelear - Abstracto implementado
         //escoger pokemon del pokedex
 
@@ -87,8 +88,7 @@ public class Entrenador extends Personaje{
         //si escoge velocidad
             //hay que validar si hay pocion/baya de +velocidad, usar
 
-    Scanner sc = new Scanner(System.in);
-    Random random = new Random();
+
 
     //ganar metodo -> el entrenador opuesto ya no tienepokemones
         //nivel 1 = 10 xp pokemon y entrenador
@@ -98,6 +98,25 @@ public class Entrenador extends Personaje{
     //tirar objeto
         //mostrar los elementos de mochila
         //que el usuario escoja cual tirar
+
+
+    @Override
+    public boolean pelear(Pokemon pokemonContrario) {
+        //escoger pokemones para pelear
+        ArrayList<Pokemon> paraPelear = new ArrayList<>();
+        if(pokedex.size() > 3){
+            for (Pokemon pokemon: pokedex) {
+                if(pokemon.getHp() >= 15){
+                    paraPelear.add(pokemon);
+                }
+            }
+            if(paraPelear.size() > 3){
+
+            }
+        }else {
+            return false;
+        }
+    }
 
     public boolean tirarObjeto(int indiceObjeto){
         if(indiceObjeto > mochila.size()-1){

@@ -1,4 +1,4 @@
-public class Personaje {
+public abstract class Personaje {
 
     //atributos
     //nombre - String protected
@@ -43,5 +43,7 @@ public class Personaje {
 
 
     //pelear - abstracto
+
+    public abstract boolean pelear(Pokemon pokemon);
 
 }

@@ -44,7 +44,7 @@ public class Pocion extends Objeto{
             pokemon.setHp(pokemon.getHp()+20);
             return true;
         } else if(this.efecto.equals("fuerza")){
-            pokemon.setFuerza(pokemon.getFuerza()+20);
+            pokemon.getHabilidad().setAtaqueBase(pokemon.getHabilidad().getAtaqueBase()+20);
             return true;
         } else if(this.efecto.equals("velocidad")){
             pokemon.setVelocidad(pokemon.getVelocidad()+20);
