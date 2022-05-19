@@ -104,18 +104,45 @@ public class Entrenador extends Personaje{
     public boolean pelear(Pokemon pokemonContrario) {
         //escoger pokemones para pelear
         ArrayList<Pokemon> paraPelear = new ArrayList<>();
-        if(pokedex.size() > 3){
-            for (Pokemon pokemon: pokedex) {
-                if(pokemon.getHp() >= 15){
-                    paraPelear.add(pokemon);
+        mostrarPokedex();
+        System.out.println("escoge 3 pokemones");
+        for (int i = 0; i < 3; i++) {
+            paraPelear.add(pokedex.get(sc.nextInt()-1));
+        }
+        int respuesta;
+
+        do {
+            System.out.println("1.- Pelear");
+            System.out.println("2.- Usar pocion");
+            System.out.println("3.- Huir");
+            respuesta = sc.nextInt();
+            if(paraPelear.size() != 0) {
+                if (respuesta == 1) {
+                    System.out.println("escoge el pokemon para pelear");
+                    mostrarPokedex(paraPelear);
+                    int eleccion = sc.nextInt();
+                    if(!paraPelear.get(eleccion).pelear(pokemonContrario));{
+                        paraPelear.remove(eleccion);
+                    } else {
+                        return true;
+                    }
+                    return true;
+                } else if (respuesta == 2) {
+                    mostrarMochila();
+                    System.out.println("Escoge la pocion");
+                    int eleccionn = sc.nextInt();
+
+                    System.out.println("escoge el pokemon para dar Pocion");
+                    mostrarPokedex(paraPelear);
+                    int elecccion = sc.nextInt();
+                    mochila.get(elecccion - 1).usar(paraPelear.get(sc.nextInt() - 1));
+                    return true;
+                } else if (respuesta == 3) {
+                    return false;
                 }
             }
-            if(paraPelear.size() > 3){
-
-            }
-        }else {
-            return false;
-        }
+        }while (respuesta != 0);
+        return false;
     }
 
     public boolean tirarObjeto(int indiceObjeto){
@@ -179,7 +206,7 @@ public class Entrenador extends Personaje{
         }
     }
 
-    public void mostrarPokedex(){
+    public void mostrarPokedex(ArrayList<> pokemones){
         System.out.println("los Pokemones disponibles son: ");
         int indice = 1;
         for (Pokemon pokemon : pokedex) {
