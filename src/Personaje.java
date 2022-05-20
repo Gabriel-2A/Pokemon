@@ -46,4 +46,12 @@ public abstract class Personaje {
 
     public abstract boolean pelear(Pokemon pokemon);
 
+    @Override
+    public String toString() {
+        return  this.getClass().toString().substring(5) +
+                "{nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                '}';
+    }
 }

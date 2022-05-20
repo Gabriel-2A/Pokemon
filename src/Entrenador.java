@@ -104,7 +104,7 @@ public class Entrenador extends Personaje{
     public boolean pelear(Pokemon pokemonContrario) {
         //escoger pokemones para pelear
         ArrayList<Pokemon> paraPelear = new ArrayList<>();
-        mostrarPokedex();
+        mostrarPokedex(pokedex);
         System.out.println("escoge 3 pokemones");
         for (int i = 0; i < 3; i++) {
             paraPelear.add(pokedex.get(sc.nextInt()-1));
@@ -121,12 +121,12 @@ public class Entrenador extends Personaje{
                     System.out.println("escoge el pokemon para pelear");
                     mostrarPokedex(paraPelear);
                     int eleccion = sc.nextInt();
-                    if(!paraPelear.get(eleccion).pelear(pokemonContrario));{
+                    if(!paraPelear.get(eleccion).pelear(pokemonContrario)){
                         paraPelear.remove(eleccion);
+                        return false;
                     } else {
                         return true;
                     }
-                    return true;
                 } else if (respuesta == 2) {
                     mostrarMochila();
                     System.out.println("Escoge la pocion");
@@ -179,7 +179,7 @@ public class Entrenador extends Personaje{
         System.out.println("¿Que pokemon deceas intercambiar?");
         int indicePokemonOpuesto = sc.nextInt()-1;
         System.out.println("Que pokemon ofreses?");
-        mostrarPokedex();
+        mostrarPokedex(pokedex);
         int indicePokemonPropio = sc.nextInt()-1;
         System.out.println("Te lo cambio por: " + pokedex.get(indicePokemonPropio));
 
@@ -206,7 +206,7 @@ public class Entrenador extends Personaje{
         }
     }
 
-    public void mostrarPokedex(ArrayList<> pokemones){
+    public void mostrarPokedex(ArrayList<Pokemon> pokemones){
         System.out.println("los Pokemones disponibles son: ");
         int indice = 1;
         for (Pokemon pokemon : pokedex) {
@@ -216,4 +216,17 @@ public class Entrenador extends Personaje{
         }
     }
 
+    @Override
+    public String toString() {
+        return "Entrenador{" +
+                "region='" + region + '\'' +
+                ", torneosganados=" + torneosganados +
+                ", pokedex=" + pokedex +
+                ", mochila=" + mochila +
+                ", dinero=" + dinero +
+                ", nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                '}';
+    }
 }

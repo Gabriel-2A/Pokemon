@@ -108,4 +108,27 @@ public class Pokemon extends Personaje{
 
         //cuando se lanza el ataque se resta la vida
         // de ataque del hp
+
+
+    @Override
+    public boolean pelear(Pokemon pokemon) {
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "nombre='" + nombre + '\'' +
+                ", nivel=" + nivel +
+                ", genero=" + genero +
+                ", tipo='" + tipo + '\'' +
+                ", habilidad=" + habilidad +
+                ", hp=" + hp +
+                ", esLegendario=" + esLegendario +
+                ", debilContra='" + debilContra + '\'' +
+                ", fuerteContra='" + fuerteContra + '\'' +
+                ", fuerza=" + fuerza +
+                ", velocidad=" + velocidad +
+                '}';
+    }
 }

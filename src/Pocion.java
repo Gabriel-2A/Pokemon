@@ -53,4 +53,16 @@ public class Pocion extends Objeto{
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Pocion{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", efecto='" + efecto + '\'' +
+                ", duracion=" + duracion +
+                '}';
+    }
 }

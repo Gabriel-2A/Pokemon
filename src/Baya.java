@@ -52,4 +52,16 @@ public class Baya extends Objeto{
             return false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Baya{" +
+                "efecto='" + efecto + '\'' +
+                ", duracion=" + duracion +
+                ", costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                '}';
+    }
 }

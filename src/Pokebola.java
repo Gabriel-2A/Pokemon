@@ -42,4 +42,15 @@ public class Pokebola extends Objeto{
             return  false;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Pokebola{" +
+                "costo=" + costo +
+                ", cantidad=" + cantidad +
+                ", nombre='" + nombre + '\'' +
+                ", tipo='" + tipo + '\'' +
+                ", efectividad=" + efectividad +
+                '}';
+    }
 }
