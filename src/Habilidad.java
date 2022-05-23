@@ -38,6 +38,7 @@ public class Habilidad {
         this.ataqueBase = ataqueBase;
     }
 
+
     @Override
     public String toString() {
         return "Habilidad{" +

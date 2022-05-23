@@ -111,7 +111,15 @@ public class Pokemon extends Personaje{
 
 
     @Override
-    public boolean pelear(Pokemon pokemon) {
+    public boolean pelear(Pokemon pokemonContrario) {
+        do {
+
+            if(this.hp > pokemonContrario.getHp()){
+
+            }
+
+        }while ();
+
         return false;
     }
 
