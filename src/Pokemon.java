@@ -112,13 +112,42 @@ public class Pokemon extends Personaje{
 
     @Override
     public boolean pelear(Pokemon pokemonContrario) {
+
+        if(this.fuerteContra.equals(pokemonContrario.tipo)){
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase() + 30);
+        } else if(pokemonContrario.fuerteContra.equals(this.tipo)){
+            pokemonContrario.habilidad.setAtaqueBase(pokemonContrario.habilidad.getAtaqueBase() + 30);
+        }
+
         do {
 
-            if(this.hp > pokemonContrario.getHp()){
+            if(this.velocidad > pokemonContrario.velocidad){
+
+                pokemonContrario.hp -= this.habilidad.getAtaqueBase();
+                if(pokemonContrario.hp <= 0){
+                    return true;
+                } else {
+                    this.hp -= pokemonContrario.habilidad.getAtaqueBase();
+                    if(this.hp <= 0){
+                        return false;
+                    }
+                }
+
+            } else {
+
+                this.hp -= pokemonContrario.habilidad.getAtaqueBase();
+                if(this.hp <= 0){
+                    return false;
+                } else {
+                    pokemonContrario.hp -= this.habilidad.getAtaqueBase();
+                    if(pokemonContrario.hp <= 0){
+                        return true;
+                    }
+                }
 
             }
 
-        }while ();
+        }while (this.hp > 0 || pokemonContrario.hp > 0);
 
         return false;
     }
