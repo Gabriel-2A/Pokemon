@@ -113,21 +113,23 @@ public class Pokemon extends Personaje{
     @Override
     public boolean pelear(Pokemon pokemonContrario) {
 
-        if(this.fuerteContra.equals(pokemonContrario.tipo)){
+        if(this.fuerteContra.equals(pokemonContrario.getTipo())){
             this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase() + 30);
-        } else if(pokemonContrario.fuerteContra.equals(this.tipo)){
-            pokemonContrario.habilidad.setAtaqueBase(pokemonContrario.habilidad.getAtaqueBase() + 30);
-        }
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase() - 30);
+        } else if(pokemonContrario.getFuerteContra().equals(this.tipo)){
+            pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase() + 30);
+            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase() - 30);
+        } else {}
 
         do {
 
-            if(this.velocidad > pokemonContrario.velocidad){
+            if(this.velocidad >= pokemonContrario.getVelocidad()){
 
-                pokemonContrario.hp -= this.habilidad.getAtaqueBase();
-                if(pokemonContrario.hp <= 0){
+                pokemonContrario.setHp(pokemonContrario.getHp() - this.habilidad.getAtaqueBase());
+                if(pokemonContrario.getHp() <= 0){
                     return true;
                 } else {
-                    this.hp -= pokemonContrario.habilidad.getAtaqueBase();
+                    this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
                     if(this.hp <= 0){
                         return false;
                     }
@@ -135,11 +137,11 @@ public class Pokemon extends Personaje{
 
             } else {
 
-                this.hp -= pokemonContrario.habilidad.getAtaqueBase();
+                this.hp -= pokemonContrario.getHabilidad().getAtaqueBase();
                 if(this.hp <= 0){
                     return false;
                 } else {
-                    pokemonContrario.hp -= this.habilidad.getAtaqueBase();
+                    pokemonContrario.setHp(pokemonContrario.getHp() - this.habilidad.getAtaqueBase());
                     if(pokemonContrario.hp <= 0){
                         return true;
                     }
@@ -147,9 +149,9 @@ public class Pokemon extends Personaje{
 
             }
 
-        }while (this.hp > 0 || pokemonContrario.hp > 0);
+        }while (true);
 
-        return false;
+        //return false;
     }
 
     @Override
