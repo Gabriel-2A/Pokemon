@@ -30,7 +30,14 @@ public class Main implements UtilInterface{
                             "4.-");
         int decicion = sc.nextInt();
         switch (decicion){
-            case
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
         }
     }
 
@@ -46,7 +53,19 @@ public class Main implements UtilInterface{
 
     @Override
     public String[] debilYFuerteAleatorio(String tipo) {
-        switch (tipo){}
+        String[] debilYFuerte = new String[2];
+        switch (tipo){
+            case "Agua":
+                debilYFuerte[0] = "Planta";
+                debilYFuerte
+                break;
+            case "Tierra":
+                break;
+            case "Fuego":
+                break;
+            case "Planta":
+                break;
+        }
         return new String[0];
     }
 
