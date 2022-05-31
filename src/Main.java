@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main implements UtilInterface{
@@ -9,7 +10,7 @@ public class Main implements UtilInterface{
     static Habilidad habilidad3 = new Habilidad("Confusion", "Ataca directamente a la mente ", 65);
     static ArrayList<String> tiposPokemon;
     public static void main(String[] args){
-
+                Main m = new Main();
             }
 
     @Override
@@ -18,6 +19,7 @@ public class Main implements UtilInterface{
         //Thread.sleep(2000);
       //  tiempoFinal = System.currentTimeMillis();
         double tiempo =(double) ((tiempoFinal - tiempoInicial)/1000);
+        System.out.println("Tiempo jugado: " + tiempo);
         //return tiempo;
     }
 
@@ -25,10 +27,10 @@ public class Main implements UtilInterface{
     public void mostrarMenu() {
         Scanner sc = new Scanner(System.in);
         System.out.println("1.- explorar" +
-                            "2.- entrar a  la tienda" +
-                            "3.- ver estaisticas" +
-                            "4.- tiempo jugador" +
-                            "5.- terminar");
+                            "\n2.- entrar a  la tienda" +
+                            "\n3.- ver estaisticas" +
+                            "\n4.- tiempo jugador" +
+                            "\n5.- terminar");
     }
 
     @Override
@@ -38,7 +40,9 @@ public class Main implements UtilInterface{
 
     @Override
     public <T> T sacarAleatorio(ArrayList<T> arrayList) {
-        return null;
+        Random random = new Random();
+        int indice = random.nextInt(arrayList.size());
+        return arrayList.get(indice);
     }
 
     @Override
