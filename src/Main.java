@@ -14,22 +14,37 @@ public class Main implements UtilInterface{
 
     public static void main(String[] args) throws InterruptedException {
 
-                long tiempoInicial = System.currentTimeMillis();
+        long tiempoInicial = System.currentTimeMillis();
 
-                habilidades.add(habilidad);
-                habilidades.add(habilidad2);
-                habilidades.add(habilidad3);
+        habilidades.add(habilidad);
+        habilidades.add(habilidad2);
+        habilidades.add(habilidad3);
 
-                tiposPokemon = new ArrayList<>(Arrays.asList("Agua", "Tierra", "Fuego", "Planta"));
-                Thread.sleep(1500);
-                Main main = new Main();
+        tiposPokemon = new ArrayList<>(Arrays.asList("Agua", "Tierra", "Fuego", "Planta"));
+        Main main = new Main();
 
-                main.tiempoJugado(tiempoInicial, System.currentTimeMillis());
+        //while respusta == 0
+        // mostrar menu
+        // usuario escoge
+        // explorar
+        //  while para saber si uiere dejar de observar
 
-                System.out.println(main.crearPokemonAleatorio());
-        System.out.println(main.crearPokemonAleatorio());
-        System.out.println(main.crearPokemonAleatorio());
-
+        int respuesta = 1;
+        Scanner scanner = new Scanner(System.in);
+        while (respuesta != 0)
+                main.mostrarMenu();
+        System.out.println("Elija una opcion: ");
+                respuesta = scanner.nextInt();
+                if(respuesta == 1){
+                    int dejarExlorar = 1;
+                    while (dejarExlorar != 0){
+                        Thread.sleep(1000);
+                        System.out.println("Aparecio un pokemon salvaje");
+                        System.out.println(main.crearPokemonAleatorio());
+                        System.out.println("Quieres seguir explorando 1.");
+                        dejarExlorar = scanner.nextInt();
+                    }
+                }
             }
 
     @Override
@@ -49,7 +64,7 @@ public class Main implements UtilInterface{
                             "\n2.- entrar a  la tienda" +
                             "\n3.- ver estaisticas" +
                             "\n4.- tiempo jugador" +
-                            "\n5.- terminar");
+                            "\n0.- terminar");
     }
 
     @Override
