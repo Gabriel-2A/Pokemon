@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.lang.Thread;
 
 public class Main implements UtilInterface{
 
@@ -11,7 +12,7 @@ public class Main implements UtilInterface{
     static Habilidad habilidad3 = new Habilidad("Confusion", "Ataca directamente a la mente ", 65);
     static ArrayList<String> tiposPokemon;
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
 
                 long tiempoInicial = System.currentTimeMillis();
 
@@ -20,6 +21,12 @@ public class Main implements UtilInterface{
                 habilidades.add(habilidad3);
 
                 tiposPokemon = new ArrayList<>(Arrays.asList("Agua", "Tierra", "Fuego", "Planta"));
+                Thread.sleep(1500);
+                Main main = new Main();
+
+                main.tiempoJugado(tiempoInicial, System.currentTimeMillis());
+
+
             }
 
     @Override
@@ -45,8 +52,7 @@ public class Main implements UtilInterface{
     @Override
     public Pokemon crearPokemonAleatorio() {
         Random random = new Random();
-        int numeroTipo = random.nextInt(tiposPokemon.size());
-        String tipo = tiposPokemon.get(numeroTipo);
+        String tipo = sacarAleatorio(tiposPokemon);
         int tamanioNombre = nombresPokemon(tipo).length;
         int nombre = random.nextInt(tamanioNombre);
         int hp = random.nextInt(200);
@@ -55,10 +61,9 @@ public class Main implements UtilInterface{
         String[] debilFuerte = debilYFuerte(tipo);
         int fuerza = random.nextInt(200);
         int velocidad = random.nextInt(200);
-        int numHabilidad = random.nextInt(habilidades.size());
         char genero = random.nextInt(10) < 5 ? 'f' : 'm';
         return new Pokemon(nombresPokemon(tipo)[nombre], nivel,
-                genero, tipo, habilidades.get(numHabilidad), hp,
+                genero, tipo, sacarAleatorio(habilidades), hp,
                 legendario, debilFuerte[0], debilFuerte[1], fuerza, velocidad);
     }
 
