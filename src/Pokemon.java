@@ -114,7 +114,7 @@ public class Pokemon extends Personaje{
     public boolean pelear(Pokemon pokemonContrario) {
 
         if(this.fuerteContra.equals(pokemonContrario.getTipo())){
-            this.habilidad.setAtaqueBase(this.habilidad.getAtaqueBase() + 30);
+            this.habilidad.setAtaqueBase((int) (this.habilidad.getAtaqueBase() / 0.50));
             pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase() - 30);
         } else if(pokemonContrario.getFuerteContra().equals(this.tipo)){
             pokemonContrario.getHabilidad().setAtaqueBase(pokemonContrario.getHabilidad().getAtaqueBase() + 30);

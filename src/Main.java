@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -9,8 +10,16 @@ public class Main implements UtilInterface{
     static Habilidad habilidad2 = new Habilidad("Vuelo", "Vuela muy alto para despues tirar un golpe fulminante", 78);
     static Habilidad habilidad3 = new Habilidad("Confusion", "Ataca directamente a la mente ", 65);
     static ArrayList<String> tiposPokemon;
+
     public static void main(String[] args){
-                Main m = new Main();
+
+                long tiempoInicial = System.currentTimeMillis();
+
+                habilidades.add(habilidad);
+                habilidades.add(habilidad2);
+                habilidades.add(habilidad3);
+
+                tiposPokemon = new ArrayList<>(Arrays.asList("Agua", "Tierra", "Fuego", "Planta"));
             }
 
     @Override
@@ -35,6 +44,17 @@ public class Main implements UtilInterface{
 
     @Override
     public Pokemon crearPokemonAleatorio() {
+        Random random = new Random();
+        int numeroTipo = random.nextInt(tiposPokemon.size());
+        String tipo = tiposPokemon.get(numeroTipo);
+        int tamanioNombre = nombresPokemonAleatorios(tipo).length;
+        int nombre = random.nextInt(tamanioNombre);
+        int hp = random.nextInt(200);
+        boolean legendario = random.nextBoolean();/*random.nextInt(500) == 1 ? true : false;*/
+        String[] debilFuerte = debilYFuerteAleatorio(tipo);
+        int fuerza = random.nextInt(200);
+        int velocidad = random.nextInt(200);
+        int numHabilidad = random.nextInt(habilidades.size());
         return null;
     }
 
