@@ -26,6 +26,9 @@ public class Main implements UtilInterface{
 
                 main.tiempoJugado(tiempoInicial, System.currentTimeMillis());
 
+                System.out.println(main.crearPokemonAleatorio());
+        System.out.println(main.crearPokemonAleatorio());
+        System.out.println(main.crearPokemonAleatorio());
 
             }
 
