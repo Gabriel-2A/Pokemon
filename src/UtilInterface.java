@@ -10,8 +10,8 @@ public interface UtilInterface {
 
     <T> T sacarAleatorio(ArrayList<T> arrayList);
 
-    String[] debilYFuerteAleatorio(String tipo);
+    String[] debilYFuerte(String tipo);
 
-    String[] nombresPokemonAleatorios(String tipo);
+    String[] nombresPokemon(String tipo);
 
 }

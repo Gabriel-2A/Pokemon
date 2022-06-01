@@ -47,15 +47,19 @@ public class Main implements UtilInterface{
         Random random = new Random();
         int numeroTipo = random.nextInt(tiposPokemon.size());
         String tipo = tiposPokemon.get(numeroTipo);
-        int tamanioNombre = nombresPokemonAleatorios(tipo).length;
+        int tamanioNombre = nombresPokemon(tipo).length;
         int nombre = random.nextInt(tamanioNombre);
         int hp = random.nextInt(200);
+        int nivel = random.nextInt(100);
         boolean legendario = random.nextBoolean();/*random.nextInt(500) == 1 ? true : false;*/
-        String[] debilFuerte = debilYFuerteAleatorio(tipo);
+        String[] debilFuerte = debilYFuerte(tipo);
         int fuerza = random.nextInt(200);
         int velocidad = random.nextInt(200);
         int numHabilidad = random.nextInt(habilidades.size());
-        return null;
+        char genero = random.nextInt(10) < 5 ? 'f' : 'm';
+        return new Pokemon(nombresPokemon(tipo)[nombre], nivel,
+                genero, tipo, habilidades.get(numHabilidad), hp,
+                legendario, debilFuerte[0], debilFuerte[1], fuerza, velocidad);
     }
 
     @Override
@@ -66,7 +70,7 @@ public class Main implements UtilInterface{
     }
 
     @Override
-    public String[] debilYFuerteAleatorio(String tipo) {
+    public String[] debilYFuerte(String tipo) {
         String[] debilYFuerte = new String[2];
         switch (tipo){
             case "Agua":
@@ -90,7 +94,7 @@ public class Main implements UtilInterface{
     }
 
     @Override
-    public String[] nombresPokemonAleatorios(String tipo) {
+    public String[] nombresPokemon(String tipo) {
         String[] nombres = new String[4];
         switch (tipo){
             case "Agua":
