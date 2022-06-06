@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -103,45 +104,51 @@ public class Entrenador extends Personaje{
     @Override
     public boolean pelear(Pokemon pokemonContrario) {
         //escoger pokemones para pelear
-        ArrayList<Pokemon> paraPelear = new ArrayList<>();
-        mostrarPokedex(pokedex);
-        System.out.println("escoge 3 pokemones");
-        for (int i = 0; i < 3; i++) {
-            paraPelear.add(pokedex.get(sc.nextInt()-1));
-        }
-        int respuesta;
-
-        do {
-            System.out.println("1.- Pelear");
-            System.out.println("2.- Usar pocion");
-            System.out.println("3.- Huir");
-            respuesta = sc.nextInt();
-            if(paraPelear.size() != 0) {
-                if (respuesta == 1) {
-                    System.out.println("escoge el pokemon para pelear");
-                    mostrarPokedex(paraPelear);
-                    int eleccion = sc.nextInt();
-                    if(!paraPelear.get(eleccion).pelear(pokemonContrario)){
-                        paraPelear.remove(eleccion);
-                        return false;
-                    } else {
-                        return true;
-                    }
-                } else if (respuesta == 2) {
-                    mostrarMochila();
-                    System.out.println("Escoge la pocion");
-                    int eleccionn = sc.nextInt();
-
-                    System.out.println("escoge el pokemon para dar Pocion");
-                    mostrarPokedex(paraPelear);
-                    int elecccion = sc.nextInt();
-                    mochila.get(elecccion - 1).usar(paraPelear.get(sc.nextInt() - 1));
-                    return true;
-                } else if (respuesta == 3) {
-                    return false;
-                }
+        try {
+            ArrayList<Pokemon> paraPelear = new ArrayList<>();
+            mostrarPokedex(pokedex);
+            System.out.println("escoge 3 pokemones");
+            for (int i = 0; i < 3; i++) {
+                paraPelear.add(pokedex.get(sc.nextInt() - 1));
             }
-        }while (respuesta != 0);
+            int respuesta;
+
+            do {
+                System.out.println("1.- Pelear");
+                System.out.println("2.- Usar pocion");
+                System.out.println("3.- Huir");
+                respuesta = sc.nextInt();
+                if (paraPelear.size() != 0) {
+                    if (respuesta == 1) {
+                        System.out.println("escoge el pokemon para pelear");
+                        mostrarPokedex(paraPelear);
+                        int eleccion = sc.nextInt();
+                        if (!paraPelear.get(eleccion).pelear(pokemonContrario)) {
+                            paraPelear.remove(eleccion);
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else if (respuesta == 2) {
+                        mostrarMochila();
+                        System.out.println("Escoge la pocion");
+                        int eleccionn = sc.nextInt();
+
+                        System.out.println("escoge el pokemon para dar Pocion");
+                        mostrarPokedex(paraPelear);
+                        int elecccion = sc.nextInt();
+                        mochila.get(elecccion - 1).usar(paraPelear.get(sc.nextInt() - 1));
+                        return true;
+                    } else if (respuesta == 3) {
+                        return false;
+                    }
+                }
+            } while (respuesta != 0);
+        } catch (InputMismatchException e){
+            System.out.println(e.getMessage());
+        } catch (IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+        }
         return false;
     }
 
