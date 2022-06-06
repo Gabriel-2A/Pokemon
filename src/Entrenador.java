@@ -153,13 +153,17 @@ public class Entrenador extends Personaje{
     }
 
     public boolean tirarObjeto(int indiceObjeto){
-        if(indiceObjeto > mochila.size()-1){
+        try {
+            if (indiceObjeto > mochila.size() - 1) {
+                return false;
+            } else {
+                mochila.remove(indiceObjeto);
+                return true;
+            }
+        } catch(IndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
             return false;
-        } else {
-            mochila.remove(indiceObjeto);
-            return true;
         }
-
     }
 
     //intercambiar
