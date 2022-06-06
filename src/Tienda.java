@@ -41,24 +41,29 @@ public class Tienda {
             //Sino
                 //hacer una excepcion de que no hay la cantidad que pide
                 //repetimos pregunta
-        if(indiceObjeto > objetosDisponibles.size()) {
-            System.out.println("Error");
-            return false;
-        } else {
+ //       if(indiceObjeto > objetosDisponibles.size()) {
+ //           System.out.println("Error");
+ //           return false;
+ //       } else {
+        try {
             if (objetosDisponibles.get(indiceObjeto).cantidad >= cantidad) {
                 double presioTotal = cantidad * objetosDisponibles.get(indiceObjeto).costo;
-                if(dinero >= presioTotal){
+                if (dinero >= presioTotal) {
                     System.out.println("Usted esta comprando " + cantidad + " " + objetosDisponibles.get(indiceObjeto).nombre + " por $" + presioTotal);
-                    System.out.println("Su cambio es: " + (dinero-presioTotal));
+                    System.out.println("Su cambio es: " + (dinero - presioTotal));
                     return true;
                 } else {
                     System.out.println("No le alcanza, le falta: " + (presioTotal - dinero));
-                    return  false;
+                    return false;
                 }
             } else {
                 System.out.println("No tenemos la cantidad solicitada");
                 return false;
             }
+//        }
+        } catch(ArrayIndexOutOfBoundsException e){
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 
